@@ -21,7 +21,7 @@ import {
   SnapData,
   SnapId,
 } from '@metamask/snap-types';
-import passworder from '@metamask/browser-passworder'
+import passworder from '@metamask/browser-passworder';
 import { ethErrors, serializeError } from 'eth-rpc-errors';
 import { SerializedEthereumRpcError } from 'eth-rpc-errors/dist/classes';
 import type { Patch } from 'immer';
@@ -161,8 +161,8 @@ export interface SnapRuntimeData {
    * RPC handler designated for the Snap
    */
   rpcHandler:
-  | null
-  | ((origin: string, request: Record<string, unknown>) => Promise<unknown>);
+    | null
+    | ((origin: string, request: Record<string, unknown>) => Promise<unknown>);
 }
 
 /**
@@ -912,14 +912,14 @@ export class SnapController extends BaseController<
 
     return snap
       ? (Object.keys(snap).reduce((serialized, key) => {
-        if (TRUNCATED_SNAP_PROPERTIES.has(key as any)) {
-          serialized[key as keyof TruncatedSnap] = snap[
-            key as keyof TruncatedSnap
-          ] as any;
-        }
+          if (TRUNCATED_SNAP_PROPERTIES.has(key as any)) {
+            serialized[key as keyof TruncatedSnap] = snap[
+              key as keyof TruncatedSnap
+            ] as any;
+          }
 
-        return serialized;
-      }, {} as Partial<TruncatedSnap>) as TruncatedSnap)
+          return serialized;
+        }, {} as Partial<TruncatedSnap>) as TruncatedSnap)
       : null;
   }
 
@@ -1671,11 +1671,11 @@ export class SnapController extends BaseController<
       ).text(),
       iconPath
         ? (
-          await this._fetchFunction(
-            new URL(iconPath, localhostUrl).toString(),
-            fetchOptions,
-          )
-        ).text()
+            await this._fetchFunction(
+              new URL(iconPath, localhostUrl).toString(),
+              fetchOptions,
+            )
+          ).text()
         : undefined,
     ]);
 
